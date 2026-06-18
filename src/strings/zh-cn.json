@@ -1859,6 +1859,8 @@
     "EncodingFormatHelp": "选择 Jellyfin 应转码到的视频编码。 当所选格式的硬件加速不可用时，Jellyfin 将使用软件编码。 H264 编码将始终启用。",
     "EnableLibrary": "启用媒体库",
     "EnableLibraryHelp": "禁用该媒体库将从所有用户视图中隐藏它。",
+    "LocalMetadataOnlyImport": "极速导入",
+    "LocalMetadataOnlyImportHelp": "仅使用本地 NFO 和本地图片导入媒体库。扫描期间会跳过视频文件探测、ISO 解析、远程元数据和远程图片下载。",
     "ErrorDeletingLyrics": "从服务器中删除歌词时出现了错误。请检查Jellyfin是否具有对应媒体文件夹的写入权限，然后重试。",
     "Lyrics": "歌词",
     "LabelTrickplayAccelEncoding": "启用硬件加速的 MJPEG 编码",
