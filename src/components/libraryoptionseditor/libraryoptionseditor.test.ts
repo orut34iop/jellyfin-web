@@ -22,9 +22,9 @@ describe('libraryoptionseditor LocalMetadataOnlyImport option', () => {
         expect(template).toContain('class="chkLocalMetadataOnlyImport" checked');
         expect(template).toContain('${LocalMetadataOnlyImport}');
         expect(template).toContain('${LocalMetadataOnlyImportHelp}');
-        expect(template).toContain('class="chkCreateLocalActorItems"');
-        expect(template).toContain('${CreateLocalActorItems}');
-        expect(template).toContain('${CreateLocalActorItemsHelp}');
+        expect(template).toContain('class="chkCreateLocalPersonItems"');
+        expect(template).toContain('${CreateLocalPersonItems}');
+        expect(template).toContain('${CreateLocalPersonItemsHelp}');
     });
 
     it('binds LocalMetadataOnlyImport into saved and restored library options', () => {
@@ -32,8 +32,8 @@ describe('libraryoptionseditor LocalMetadataOnlyImport option', () => {
 
         expect(editor).toContain("LocalMetadataOnlyImport: parent.querySelector('.chkLocalMetadataOnlyImport').checked");
         expect(editor).toContain("parent.querySelector('.chkLocalMetadataOnlyImport').checked = options.LocalMetadataOnlyImport === true");
-        expect(editor).toContain("CreateLocalActorItems: parent.querySelector('.chkCreateLocalActorItems').checked");
-        expect(editor).toContain("parent.querySelector('.chkCreateLocalActorItems').checked = options.CreateLocalActorItems === true");
+        expect(editor).toContain("CreateLocalPersonItems: parent.querySelector('.chkCreateLocalPersonItems').checked");
+        expect(editor).toContain("parent.querySelector('.chkCreateLocalPersonItems').checked = options.CreateLocalPersonItems === true");
     });
 
     it('adds English and Simplified Chinese strings', () => {
@@ -44,7 +44,7 @@ describe('libraryoptionseditor LocalMetadataOnlyImport option', () => {
         expect(english.LocalMetadataOnlyImportHelp).toContain('local NFO files');
         expect(chinese.LocalMetadataOnlyImport).toBe('极速导入');
         expect(chinese.LocalMetadataOnlyImportHelp).toContain('本地 NFO');
-        expect(english.CreateLocalActorItems).toContain('favorites');
-        expect(chinese.CreateLocalActorItems).toContain('演员');
+        expect(english.CreateLocalPersonItems).toContain('person');
+        expect(chinese.CreateLocalPersonItems).toContain('人物');
     });
 });
