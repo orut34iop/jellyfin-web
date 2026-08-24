@@ -1861,6 +1861,8 @@
     "EnableLibraryHelp": "禁用该媒体库将从所有用户视图中隐藏它。",
     "LocalMetadataOnlyImport": "极速导入",
     "LocalMetadataOnlyImportHelp": "仅使用本地 NFO 和本地图片导入媒体库。扫描期间会跳过视频文件探测、ISO 解析、远程元数据和远程图片下载。",
+    "CreateLocalActorItems": "创建可收藏的演员条目",
+    "CreateLocalActorItemsHelp": "根据本地元数据创建轻量演员条目，使演员获得稳定 ID 并可加入收藏。仅在启用极速导入时生效。",
     "ErrorDeletingLyrics": "从服务器中删除歌词时出现了错误。请检查Jellyfin是否具有对应媒体文件夹的写入权限，然后重试。",
     "Lyrics": "歌词",
     "LabelTrickplayAccelEncoding": "启用硬件加速的 MJPEG 编码",
