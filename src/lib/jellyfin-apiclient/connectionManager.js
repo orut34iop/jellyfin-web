@@ -2,7 +2,6 @@ import { AUTHORIZATION_HEADER } from '@jellyfin/sdk/lib/constants';
 import { getAuthorizationHeader } from '@jellyfin/sdk/lib/utils';
 import { MINIMUM_VERSION } from '@jellyfin/sdk/lib/versions';
 import { getSessionApi } from '@jellyfin/sdk/lib/utils/api/session-api';
-import { compareVersions } from '@jellyfin/sdk/lib/utils/versioning';
 
 import events from 'utils/events';
 import { ajax } from 'utils/fetch';
@@ -14,6 +13,7 @@ import { safeDecodeURIComponent } from 'utils/url';
 import { ConnectionMode } from './connectionMode';
 import { ConnectionState } from './connectionState';
 import getServerAddress from './utils/getServerAddress';
+import isServerVersionSupported from './utils/isServerVersionSupported';
 
 const DEFAULT_CONNECTION_TIMEOUT = 20000;
 
@@ -552,7 +552,7 @@ export default class ConnectionManager {
                         const connectionMode = result.connectionMode;
                         result = result.data;
 
-                        if (compareVersions(self.minServerVersion(), result.Version) === 1) {
+                        if (!isServerVersionSupported(result.Version, self.minServerVersion())) {
                             console.warn('[ConnectionManager] minServerVersion requirement not met. Server version:', result.Version);
                             resolve({
                                 State: ConnectionState.ServerUpdateNeeded,
