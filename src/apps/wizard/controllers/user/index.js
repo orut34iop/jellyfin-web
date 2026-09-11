@@ -3,6 +3,7 @@ import toast from 'components/toast/toast';
 import globalize from 'lib/globalize';
 import { ServerConnections } from 'lib/jellyfin-apiclient';
 import Dashboard from 'utils/dashboard';
+import saveStartupUser from './saveStartupUser';
 
 import 'styles/dashboard.scss';
 import 'elements/emby-input/emby-input';
@@ -15,32 +16,24 @@ function nextWizardPage() {
         });
 }
 
-function onUpdateUserComplete(result) {
-    console.debug('[Wizard > User] user update complete:', result);
+function onUpdateUserComplete() {
     loading.hide();
     nextWizardPage();
 }
 
-async function onUpdateUserError(result) {
-    const message = await result.text();
-    console.warn('[Wizard > User] user update failed:', message);
-    toast(globalize.translate('ErrorDefault'));
+function onUpdateUserError(result) {
+    toast(globalize.translate([401, 403].includes(result?.status) ? 'MessageInvalidUser' : 'ErrorDefault'));
     loading.hide();
 }
 
 function submit(form) {
     loading.show();
     const apiClient = ServerConnections.currentApiClient();
-    apiClient
-        .ajax({
-            type: 'POST',
-            data: JSON.stringify({
-                Name: form.querySelector('#txtUsername').value.trim(),
-                Password: form.querySelector('#txtManualPassword').value
-            }),
-            url: apiClient.getUrl('Startup/User'),
-            contentType: 'application/json'
-        })
+    saveStartupUser(
+        apiClient,
+        form.querySelector('#txtUsername').value.trim(),
+        form.querySelector('#txtManualPassword').value
+    )
         .then(onUpdateUserComplete)
         .catch(onUpdateUserError);
 }
