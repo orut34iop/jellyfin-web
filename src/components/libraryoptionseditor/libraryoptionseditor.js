@@ -701,6 +701,8 @@ function setImageOptionsIntoOptions(options) {
 export function getLibraryOptions(parent) {
     const options = {
         Enabled: parent.querySelector('.chkEnabled').checked,
+        LocalMetadataOnlyImport: parent.querySelector('.chkLocalMetadataOnlyImport').checked,
+        CreateLocalPersonItems: parent.querySelector('.chkCreateLocalPersonItems').checked,
         EnableArchiveMediaFiles: false,
         EnablePhotos: parent.querySelector('.chkEnablePhotos').checked,
         EnableRealtimeMonitor: parent.querySelector('.chkEnableRealtimeMonitor').checked,
@@ -776,6 +778,8 @@ export function setLibraryOptions(parent, options) {
     parent.querySelector('#selectAutoRefreshInterval').value = options.AutomaticRefreshIntervalDays || '0';
     parent.querySelector('#txtSeasonZeroName').value = options.SeasonZeroDisplayName || 'Specials';
     parent.querySelector('.chkEnabled').checked = options.Enabled;
+    parent.querySelector('.chkLocalMetadataOnlyImport').checked = options.LocalMetadataOnlyImport === true;
+    parent.querySelector('.chkCreateLocalPersonItems').checked = options.CreateLocalPersonItems === true;
     parent.querySelector('.chkEnablePhotos').checked = options.EnablePhotos;
     parent.querySelector('.chkEnableRealtimeMonitor').checked = options.EnableRealtimeMonitor;
     parent.querySelector('.chkEnableLUFSScan').checked = options.EnableLUFSScan;
